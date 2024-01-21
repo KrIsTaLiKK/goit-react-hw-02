@@ -1,0 +1,6 @@
+.optionsList {
+  position: relative;
+  display: flex;
+  gap: 30px;
+  margin: 30px 0 80px;
+}

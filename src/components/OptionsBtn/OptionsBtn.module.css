@@ -1,0 +1,69 @@
+.optionsBtn {
+  display: flex;
+  gap: 5px;
+  align-items: center;
+  justify-content: center;
+
+  width: 150px;
+  height: 50px;
+  font-family: 'Salsa';
+  font-size: 20px;
+  text-transform: capitalize;
+  border: transparent;
+  border-radius: 50px;
+  background-color: black;
+  color: white;
+  transform: scale(1);
+
+  transition: scale 5000ms cubic-bezier(0.785, 0.135, 0.15, 0.86);
+}
+
+.resetBtnWrap {
+  position: relative;
+}
+
+.resetBtnWrap {
+  position: absolute;
+  left: 50%;
+
+  transform: translateX(-50%);
+}
+
+.resetBtnWrap.isActive {
+  bottom: -65px;
+}
+
+.resetBtn {
+  composes: optionsBtn;
+  background-color: white;
+  border: 2px solid rgb(222, 215, 215);
+  color: black;
+}
+
+.resetBtn:is(:hover, :focus) {
+  border: 2px solid black;
+  color: red;
+}
+
+.optionIcon {
+  color: yellow;
+}
+
+.optionsBtn.isGood:is(:hover, :focus) {
+  border: 2px solid green;
+  color: green;
+  box-shadow: green 0px 0px 5px 0px, green 0px 0px 1px 0px;
+  transform: scale(1.1);
+}
+.optionsBtn.isNeutral:is(:hover, :focus) {
+  border: 2px solid orange;
+  color: orange;
+  box-shadow: orange 0px 0px 5px 0px, orange 0px 0px 1px 0px;
+  transform: scale(1.1);
+}
+.optionsBtn.isBad:is(:hover, :focus) {
+  border: 2px solid red;
+  color: red;
+  box-shadow: red 0px 0px 5px 0px, red 0px 0px 1px 0px;
+  transform: scale(1.1);
+}
