@@ -25,9 +25,12 @@ export const App = () => {
     notiflix(value);
 
     function notiflix(value) {
-      Notiflix.Notify.info(`${reviews[value] + 1} ${value} reviews`, {
-        fontSize: '25px',
-      });
+      Notiflix.Notify.info(
+        `${reviews[value] + 1} ${value} reviews. Thank you for feedback! 👍`,
+        {
+          fontSize: '20px',
+        }
+      );
     }
   };
 
