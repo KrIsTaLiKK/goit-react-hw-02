@@ -2,9 +2,9 @@ import { Notification } from '../Notification/Notification';
 import css from './Feedback.module.css';
 
 export const Feedback = ({
-  reviews: { good, neutral, bad },
+  feedback: { good, neutral, bad },
   totalFeedback,
-  color,
+  review,
 }) => {
   const positiveFeedbackFormula = Math.round(
     ((good + neutral) / totalFeedback) * 100
@@ -13,8 +13,8 @@ export const Feedback = ({
     ? positiveFeedbackFormula
     : 0;
 
-  function borderColorTable(key) {
-    if (color.review === key) {
+  function borderColorActiveCell(key) {
+    if (review === key) {
       return css.isActive;
     }
 
@@ -33,21 +33,21 @@ export const Feedback = ({
           </thead>
           <tbody>
             <tr>
-              <td key={'good'} className={borderColorTable('good')}>
+              <td key={'good'} className={borderColorActiveCell('good')}>
                 Good
               </td>
               <td>{good}</td>
             </tr>
 
             <tr>
-              <td key={'neutral'} className={borderColorTable('neutral')}>
+              <td key={'neutral'} className={borderColorActiveCell('neutral')}>
                 Neutral
               </td>
               <td>{neutral}</td>
             </tr>
 
             <tr>
-              <td key={'bad'} className={borderColorTable('bad')}>
+              <td key={'bad'} className={borderColorActiveCell('bad')}>
                 Bad
               </td>
               <td>{bad}</td>

@@ -5,8 +5,8 @@ import { FaSmileBeam } from 'react-icons/fa';
 import { BsEmojiNeutral } from 'react-icons/bs';
 import { FaRegFaceSadCry } from 'react-icons/fa6';
 
-export const Options = ({ onUpdate, onReset, totalFeedback, reviews }) => {
-  const feedBackKeys = Object.keys(reviews);
+export const Options = ({ onUpdate, onReset, totalFeedback, feedback }) => {
+  const feedBackKeys = Object.keys(feedback);
   const resetBtnClass = totalFeedback > 0 && style.isActive;
   const noMarginClass = !resetBtnClass && css.optionsListNoMargin;
   const iconList = [

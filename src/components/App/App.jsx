@@ -6,7 +6,7 @@ import { Options } from '../Options/Options';
 import Notiflix from 'notiflix';
 
 export const App = () => {
-  const [reviews, setReviews] = useState(() => {
+  const [feedback, setFeedback] = useState(() => {
     const savedFeedback = window.localStorage.getItem('feedback');
 
     if (savedFeedback !== null) {
@@ -16,22 +16,25 @@ export const App = () => {
     return { good: 0, neutral: 0, bad: 0 };
   });
 
-  const [color, setColor] = useState({});
+  // Змінна, яка показує, яка кнопка наразі натиснута
+  const [review, setReview] = useState('');
 
   const handleFeedback = value => {
-    setReviews(
-      {
-        ...reviews,
-        [value]: reviews[value] + 1,
-      },
-      setColor({ review: value })
-    );
+    setFeedback({
+      ...feedback,
+      [value]: feedback[value] + 1,
+    });
+
+    setReview(value);
 
     notiflix(value);
 
     function notiflix(value) {
+      const totalReviews = feedback[value] + 1;
+      const wordReview = totalReviews > 1 ? 'reviews' : 'review';
+
       Notiflix.Notify.info(
-        `${reviews[value] + 1} ${value} reviews. Thank you for feedback! 👍`,
+        `${totalReviews} ${value} ${wordReview}. Thank you for feedback! 👍`,
         {
           fontSize: '20px',
         }
@@ -40,14 +43,14 @@ export const App = () => {
   };
 
   const handleResetFeedback = () => {
-    setReviews({ good: 0, neutral: 0, bad: 0 });
+    setFeedback({ good: 0, neutral: 0, bad: 0 });
   };
 
   useEffect(() => {
-    window.localStorage.setItem('feedback', JSON.stringify(reviews));
-  }, [reviews]);
+    window.localStorage.setItem('feedback', JSON.stringify(feedback));
+  }, [feedback]);
 
-  const { good, neutral, bad } = reviews;
+  const { good, neutral, bad } = feedback;
 
   const totalFeedback = good + neutral + bad;
 
@@ -58,9 +61,13 @@ export const App = () => {
         onUpdate={handleFeedback}
         onReset={handleResetFeedback}
         totalFeedback={totalFeedback}
-        reviews={reviews}
+        feedback={feedback}
       />
-      <Feedback totalFeedback={totalFeedback} reviews={reviews} color={color} />
+      <Feedback
+        totalFeedback={totalFeedback}
+        feedback={feedback}
+        review={review}
+      />
     </div>
   );
 };
