@@ -1,8 +1,8 @@
 import css from './OptionsBtn.module.css';
 import clsx from 'clsx';
-import { FaSmileBeam } from 'react-icons/fa';
+import { IconContext } from 'react-icons';
 
-export const OptionsBtn = ({ children, onUpdate, type }) => {
+export const OptionsBtn = ({ children, onUpdate, type, icon }) => {
   function borderColorHover(type) {
     if (type === 'good') {
       return css.isGood;
@@ -21,8 +21,8 @@ export const OptionsBtn = ({ children, onUpdate, type }) => {
       className={clsx(css.optionsBtn, borderColorHover(type))}
       onClick={onUpdate}
     >
+      <IconContext.Provider value={{ size: 25 }}>{icon}</IconContext.Provider>
       {children}
-      {/* <FaSmileBeam className={css.optionIcon} /> */}
     </button>
   );
 };

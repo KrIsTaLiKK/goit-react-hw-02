@@ -1,9 +1,9 @@
 import { useState, useEffect } from 'react';
-import css from './App.module.css';
 
 import { Description } from '../Description/Description';
 import { Feedback } from '../Feedback/Feedback';
 import { Options } from '../Options/Options';
+import Notiflix from 'notiflix';
 
 export const App = () => {
   const [reviews, setReviews] = useState(() => {
@@ -21,6 +21,14 @@ export const App = () => {
       ...reviews,
       [value]: reviews[value] + 1,
     });
+
+    notiflix(value);
+
+    function notiflix(value) {
+      Notiflix.Notify.info(`${reviews[value] + 1} ${value} reviews`, {
+        fontSize: '25px',
+      });
+    }
   };
 
   const handleResetFeedback = () => {
@@ -36,7 +44,7 @@ export const App = () => {
   const totalFeedback = good + neutral + bad;
 
   return (
-    <div className="container blink">
+    <div className="container">
       <Description />
       <Options
         onUpdate={handleFeedback}

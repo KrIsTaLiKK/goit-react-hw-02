@@ -6,6 +6,10 @@
   margin-bottom: 40px;
 }
 
+.accent {
+  color: rgb(5, 133, 5);
+}
+
 .text {
   font-family: 'DM Sans';
   font-size: 30px;
