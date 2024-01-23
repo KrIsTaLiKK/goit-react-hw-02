@@ -16,11 +16,16 @@ export const App = () => {
     return { good: 0, neutral: 0, bad: 0 };
   });
 
+  const [color, setColor] = useState({});
+
   const handleFeedback = value => {
-    setReviews({
-      ...reviews,
-      [value]: reviews[value] + 1,
-    });
+    setReviews(
+      {
+        ...reviews,
+        [value]: reviews[value] + 1,
+      },
+      setColor({ review: value })
+    );
 
     notiflix(value);
 
@@ -55,7 +60,7 @@ export const App = () => {
         totalFeedback={totalFeedback}
         reviews={reviews}
       />
-      <Feedback totalFeedback={totalFeedback} reviews={reviews} />
+      <Feedback totalFeedback={totalFeedback} reviews={reviews} color={color} />
     </div>
   );
 };

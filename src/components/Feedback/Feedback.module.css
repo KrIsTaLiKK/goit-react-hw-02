@@ -28,4 +28,13 @@ tbody td:first-child {
 
 td.isActive {
   border: 2px solid blue;
+  font-weight: bold;
+}
+
+.totalRow {
+  background-color: rgb(157, 240, 157);
+}
+
+.positiveRow {
+  background-color: rgba(245, 222, 179, 0.4);
 }
